@@ -1,0 +1,536 @@
+---
+alwaysApply: true
+---
+
+## 以下是艾略特波浪理论交易法的理论知识和代码实现计算逻辑的大概思路。可根据当前来进行优化和扩充。
+
+---
+### 波浪交易法
+
+一、波浪理论核心思想与基础
+    波浪理论由拉尔夫·纳尔逊·艾略特在1930年代提出。其核心思想是：市场的走势并非随机，而是由投资者的群体心理驱动，呈现出一种可识别的、自然的韵律和模式，即“波浪”。
+
+    1. 基本波形：五浪驱动 + 三浪调整
+        
+        一个完整的市场周期由两个阶段的波浪构成：
+
+            ·驱动浪（Impulse Waves）： 与主趋势方向一致，由5个浪组成（浪1, 2, 3, 4, 5）。
+
+            ·调整浪（Corrective Waves）： 与主趋势方向相反，由3个浪组成（浪A, B, C）。
+
+        所以，一个完整的“八浪循环”是：5浪上升（驱动） + 3浪下跌（调整）。
+
+        https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Elliott_Wave_-_basic_principle.svg/400px-Elliott_Wave_-_basic_principle.svg.png
+
+二、驱动浪的详细规则与特性
+
+    这是交易获利的关键部分，规则必须严格遵守。
+
+    1.浪2 永远不会回撤掉 浪1 的100%。
+
+    2.浪3 永远不能是驱动浪（1, 3, 5）中最短的一浪。在现实中，浪3往往是最长、最猛烈的一浪。
+
+    3.浪4 的底部不能与 浪1 的顶部重叠（在期货和币圈中，这条规则有时可以适当放宽，但仍是重要指南）。
+
+    4.浪4 的回撤幅度通常比浪2要浅，显示出“空中加油”的特性。
+
+    各驱动浪的市场心理：
+
+    1.浪1： 少数敏锐的投资者认为资产已见底，开始买入。市场情绪仍以悲观为主。
+
+    2.浪2： 市场出现回调，怀疑论者认为下跌趋势仍未结束。但不会跌破浪1起点。
+
+    3.浪3： 利好消息出现，大众投资者涌入市场。价格快速上涨，成交量放大。这通常是利润最丰厚的一段。
+
+    4.浪4： 早期买入者获利了结，市场再次调整。但抛压不如浪2强烈，因为更多人仍在等待买入。
+
+    5.浪5： 市场情绪极度乐观，甚至出现“FOMO”（害怕错过）情绪。但价格动能往往减弱（出现“顶背离”），聪明资金开始悄悄离场。
+
+三、调整浪的复杂形态
+
+调整浪的形态比驱动浪更为复杂多变，是波浪理论中最难掌握的部分。主要形态有：
+
+    1.锯齿形（Zigzag）： 5-3-5结构，简单粗暴的下跌/反弹。A浪和C浪是驱动浪。
+
+    2.平台形（Flat）： 3-3-5结构，调整幅度较浅，显示市场强劲。B浪通常会接近甚至突破A浪起点。
+
+    3.三角形（Triangle）： 3-3-3-3-3结构，通常出现在第4浪或B浪，表示市场在积蓄能量，为下一波大行情做准备。分为收缩、扩张三角形等。
+
+四、如何在币圈实战应用与提高胜率
+    
+    币圈7x24小时交易、高波动、受消息面影响巨大的特点，使得波浪理论的应用既充满机会又极具挑战。
+
+    1. 识别与数浪
+
+        ·选择合适的时间框架： 不要只看1分钟、5分钟图，噪音太多。建议从 4小时图 或 日线图 开始数浪，以把握中期趋势。然后用1小时图寻找入场点。
+
+        ·寻找清晰的驱动浪： 首先在图表上寻找最符合“驱动浪规则”的5浪结构。如果找不到，宁可放弃，也不要强行数浪。
+
+        ·关注成交量： 在币圈，浪3通常伴随着天量成交量。浪5的成交量可能萎缩，形成背离，这是重要的反转信号。
+
+    2. 制定交易策略
+
+        核心思想：在调整浪的末尾介入，跟随驱动浪获利。
+
+        ·做多策略：
+
+            ·位置： 在一个上升趋势中，等待一个清晰的ABC调整浪（即2浪或4浪）结束。
+
+            ·入场： 当价格突破调整浪的下降趋势线，或者出现其他看涨信号（如早晨之星K线形态）时，在C浪末端附近入场。
+
+            ·目标： 浪3或浪5的高度，通常以斐波那契扩展位（如1.618倍浪1高度）作为目标。
+
+            ·止损： 设置在浪4（如果是做5浪）或浪C的底部下方。
+
+        ·做空策略：
+
+            ·位置： 当一个完整的5浪驱动浪结束后，预示着趋势可能反转。
+
+            ·入场： 等待价格出现反弹（A-B-C调整中的B浪），并在B浪高点附近，或价格跌破A浪起点时入场做空。
+
+            ·目标： A浪的1倍或1.618倍长度。
+
+            ·止损： 设置在5浪顶部的上方。
+
+    3. 结合其他工具（提高胜率的关键！）
+    
+        单纯数浪主观性太强，必须结合其他工具进行过滤和确认。
+
+        ·斐波那契回撤/扩展：
+
+            ·回撤： 浪2通常回撤浪1的 50%, 61.8%；浪4通常回撤浪3的 38.2%。
+
+            ·扩展： 浪3的目标通常是浪1的 1.618倍；浪5的目标可能是浪1的1倍或从浪1底到浪3顶的 0.618倍。
+
+        ·趋势线与通道： 连接浪2和浪4的底部可以画出上升趋势线。浪3常常会超出上通道线，而浪5可能在上通道线附近结束。
+
+        ·动能指标：
+
+            ·RSI： 在浪3会出现超买，在浪5可能出现顶背离，是重要的预警信号。
+
+            ·MACD： 在浪3时快慢线会大幅远离零轴，在浪5时可能出现与价格的顶背离。
+
+    4. 资金与风险管理（生存的基石）
+    
+        这是实现长期稳定盈利（而非追求单次胜率）的核心。
+
+            ·永远设置止损： 任何一笔交易都必须有明确的止损点。币圈一个“黑天鹅”事件可能让你瞬间爆仓。
+
+            ·轻仓试探： 在数浪不确定时，先用小仓位试探，确认方向正确后再顺势加仓。
+
+            ·盈亏比： 确保你的潜在盈利远大于潜在亏损（建议至少1：3）。如果你的止损空间是50点，那么你的目标至少应该是150点。
+
+
+五、币圈交易的特别注意事项
+
+    1.规则可适当放宽： 币圈波动剧烈，尤其是“浪4与浪1不重叠”的规则有时会被瞬间的针线刺破。需要结合整体形态和更多证据来判断。
+
+    2.警惕“延长浪”： 在币圈，经常出现一个驱动浪（尤其是浪3）被极度拉长的情况，看起来像是9浪或13浪。此时需要保持耐心，不要过早逆势操作。
+
+    3.消息面冲击： 政策、大佬言论、项目新闻等会瞬间破坏技术形态。数浪时必须关注市场重大消息。
+
+    4.保持灵活性： 当市场走势证明你的数浪是错误时，要勇于承认错误，及时止损，并重新分析。不要死扛或陷入“数浪执念”。
+
+六、高级心法与关键补充
+    
+    1. alternation（交替原则）  
+        
+        这是波浪理论中极其重要的一个指导性原则。它指出，在同一个波浪序列中，相邻的两个调整浪在形态和时间上倾向于以不同的形式出现。
+
+        ·应用示例：
+
+            ·如果 浪2 是一个简单、急促的“锯齿形”下跌。
+
+            ·那么 浪4 就非常可能是一个复杂、耗时的“平台形”或“三角形”整理。
+
+        ·币圈意义： 当你识别出浪2的形态后，可以对浪4的形态做出概率极高的预判。如果浪2又急又深，那么你在浪4就不要指望一个很深的回调，而应该准备迎接一个横向的、复杂的整理，从而保持耐心，不在震荡中被洗下车。
+
+    2. 通道技术
+
+        这是精确定位浪的终点和验证数浪有效性的强大工具。
+
+        ·绘制方法：
+
+            1.在驱动浪中，连接浪1和浪3的顶点，画一条趋势线。
+
+            2.然后，平行于这条线，画一条穿过浪2底点的通道线。
+
+            3.浪4 经常会回调到这条下通道线附近。
+
+            4.最终，浪5 经常会运行到由上通道线（连接浪2和浪4的顶点）和下通道线（连接浪1和浪3的底点）构成的最终通道的上轨附近，并在此终结。
+
+        ·币圈意义： 当价格逼近通道上下轨时，是你要高度警惕趋势可能反转或调整的位置，这里是止盈或准备反向操作的绝佳区域。
+
+    3. 波浪的个性（市场情绪指标）
+        
+        每一浪都有其独特的“性格”，这是市场心理的直观体现。理解它，能帮你凭“感觉”验证数浪是否正确。
+
+        ·浪1： 悄无声息，略有起色，但大多数人认为是“死猫跳”。
+
+        ·浪2： 恐惧回归，让人怀疑浪1只是假反弹。
+
+        ·浪3： 最狂野、最具戏剧性。新闻开始配合，公众蜂拥而至，FOMO情绪达到高潮。在币圈，浪3常常是“火箭发射”阶段，涨幅巨大且快速。
+
+        ·浪4： 获利盘涌现，但仍有大量投资者认为这是“上车良机”。震荡剧烈，洗走不坚定者。
+
+        ·浪5： 乐观情绪泛滥，市场一片狂欢，但内部动能（如RSI背离）已经开始减弱。在币圈，浪5常常由“山寨季”和荒谬的叙事驱动。
+
+        ·浪A： 大多数人还认为是正常回调，“抄底”声音不绝于耳。
+
+        ·浪B： “牛市陷阱”！它让人误以为主升浪又回来了，其实是最后的逃命机会。
+
+        ·浪C： 绝望式下跌，摧毁所有在浪5顶部和浪B抄底的人的信心。
+
+    4. 应对“数浪模糊期”的实战策略
+        
+        很多时候，图表并非那么清晰，存在几种可能的数浪方案。这时怎么办？
+
+        ·策略：制定“如果-那么”计划。
+
+            1.列出所有合理方案： 比如，当前走势可能是大级别的浪4调整，也可能是新一轮下跌的浪A开始。
+
+            2.为每种方案设定关键确认点： “如果价格突破XX位置，那么方案A成立，我将入场做多。” “如果价格跌破YY位置，那么方案B成立，我将离场或做空。”
+
+            3.等待市场自己选择方向： 不要赌，不要猜。做一个观察者和计划执行者。这是提高胜率最核心的心法——只交易市场确认后的方向。
+
+七、给币圈交易者的终极忠告
+
+    1.降低杠杆，甚至不用杠杆： 波浪理论本身就有一定主观性，加上币圈固有的高波动，使用高杠杆等于自杀。即使你的方向判断正确，一个正常的浪4回调也可能让你爆仓。用现货或极低杠杆来实践这个理论。
+
+    2.聚焦龙头（BTC/ETH）： 在主流币上，波浪形态通常更标准、更有效。山寨币容易被操纵，形态容易扭曲，不适合初学者。
+
+    3.相信你所看到的，而非你所希望的： 这是所有交易者的心魔。当你持有多单时，你会倾向于把所有上涨都数成驱动浪，把所有下跌都数成调整浪。必须保持客观，当市场走势否定你的假设时，要立刻认错。
+
+    4.时间框架的共振： 提高胜率的另一个技巧是看多时间框架共振。例如，日线图显示浪2调整可能结束，同时4小时图出现了一个清晰的5浪上升驱动浪。这种“大周期定方向，小周期找入场”的方法，能极大提高交易的成功概率。
+
+    5.交易日志： 记录下你的每一次数浪分析、交易决策、盈亏结果和事后复盘。尤其是当你数错时，一定要回去看是哪里出了问题，是规则用错了，还是忽略了交替原则，或是没注意到背离？这是你进步的阶梯。
+
+---
+
+### 缠论计算函数 示例
+
+---
+
+波浪理论分析系统设计思路
+
+核心架构
+
+class ElliottWaveAnalyzer {
+    constructor() {
+        this.priceData = [];
+        this.peaks = [];
+        this.troughs = [];
+        this.waveCounts = [];
+        this.fibonacciLevels = {};
+    }
+}
+
+完整代码实现
+
+class ElliottWaveAnalyzer {
+    constructor(settings = {}) {
+        this.settings = {
+            // 默认设置
+            minWaveLength: 5,        // 最小波浪长度
+            retracementThreshold: 0.382, // 斐波那契回撤阈值
+            overlapThreshold: 0.1,   // 重叠阈值
+            ...settings
+        };
+        
+        this.priceData = [];
+        this.peaks = [];      // 价格高点
+        this.troughs = [];    // 价格低点
+        this.waveCounts = []; // 识别的波浪
+        this.fibonacciRatios = [0.236, 0.382, 0.5, 0.618, 0.786, 1.0, 1.272, 1.414, 1.618];
+    }
+
+    // 1. 数据预处理和极值点检测
+    findExtremes(data) {
+        this.priceData = data;
+        this.peaks = [];
+        this.troughs = [];
+        
+        for (let i = 2; i < data.length - 2; i++) {
+            const current = data[i];
+            const prev1 = data[i-1];
+            const prev2 = data[i-2];
+            const next1 = data[i+1];
+            const next2 = data[i+2];
+            
+            // 检测峰值 (高价)
+            if (current.high > prev2.high && current.high > prev1.high && 
+                current.high > next1.high && current.high > next2.high) {
+                this.peaks.push({
+                    index: i,
+                    price: current.high,
+                    timestamp: current.timestamp
+                });
+            }
+            
+            // 检测谷值 (低价)
+            if (current.low < prev2.low && current.low < prev1.low && 
+                current.low < next1.low && current.low < next2.low) {
+                this.troughs.push({
+                    index: i,
+                    price: current.low,
+                    timestamp: current.timestamp
+                });
+            }
+        }
+        
+        return { peaks: this.peaks, troughs: this.troughs };
+    }
+
+    // 2. 斐波那契计算工具
+    calculateFibonacciLevels(startPrice, endPrice) {
+        const difference = endPrice - startPrice;
+        const levels = {};
+        
+        this.fibonacciRatios.forEach(ratio => {
+            levels[ratio] = endPrice - (difference * ratio);
+        });
+        
+        return levels;
+    }
+
+    // 3. 波浪识别核心算法
+    identifyWaves() {
+        const extremes = [...this.peaks, ...this.troughs]
+            .sort((a, b) => a.index - b.index);
+        
+        this.waveCounts = [];
+        let currentWave = [];
+        
+        for (let i = 0; i < extremes.length - 1; i++) {
+            const current = extremes[i];
+            const next = extremes[i + 1];
+            
+            // 计算价格变化幅度
+            const priceChange = Math.abs(next.price - current.price);
+            const percentChange = priceChange / current.price;
+            
+            if (percentChange > this.settings.minWaveLength / 100) {
+                currentWave.push({
+                    start: current,
+                    end: next,
+                    type: next.price > current.price ? 'up' : 'down',
+                    magnitude: percentChange
+                });
+                
+                // 检查波浪规则
+                if (this.validateWaveRules(currentWave)) {
+                    this.waveCounts.push([...currentWave]);
+                }
+            }
+        }
+        
+        return this.waveCounts;
+    }
+
+    // 4. 波浪规则验证
+    validateWaveRules(wave) {
+        if (wave.length < 5) return false;
+        
+        // 检查是否是5浪结构 (上-下-上-下-上 或 下-上-下-上-下)
+        const waveTypes = wave.map(w => w.type);
+        const expectedUp = ['up', 'down', 'up', 'down', 'up'];
+        const expectedDown = ['down', 'up', 'down', 'up', 'down'];
+        
+        const isImpulseUp = this.checkSequence(waveTypes, expectedUp);
+        const isImpulseDown = this.checkSequence(waveTypes, expectedDown);
+        
+        if (!isImpulseUp && !isImpulseDown) return false;
+        
+        // 规则1: 浪2不回撤浪1的100%
+        const wave1 = wave[0];
+        const wave2 = wave[1];
+        const retracement = this.calculateRetracement(wave1, wave2);
+        if (retracement >= 1.0) return false;
+        
+        // 规则2: 浪3不能是最短的驱动浪
+        const wave3 = wave[2];
+        const wave1Magnitude = wave1.magnitude;
+        const wave3Magnitude = wave3.magnitude;
+        const wave5 = wave[4] ? wave[4].magnitude : 0;
+        
+        if (wave3Magnitude <= Math.min(wave1Magnitude, wave5)) {
+            return false;
+        }
+        
+        // 规则3: 浪4不与浪1重叠 (在币圈可适当放宽)
+        const wave4End = wave[3].end.price;
+        const wave1End = wave[0].end.price;
+        
+        if (isImpulseUp) {
+            if (wave4End <= wave1End) return false;
+        } else {
+            if (wave4End >= wave1End) return false;
+        }
+        
+        return true;
+    }
+
+    // 5. 序列检查工具
+    checkSequence(actual, expected) {
+        if (actual.length !== expected.length) return false;
+        return actual.every((type, index) => type === expected[index]);
+    }
+
+    // 6. 回撤计算
+    calculateRetracement(waveA, waveB) {
+        const waveAStart = waveA.start.price;
+        const waveAEnd = waveA.end.price;
+        const waveBEnd = waveB.end.price;
+        
+        const waveAMove = Math.abs(waveAEnd - waveAStart);
+        const retracementMove = Math.abs(waveBEnd - waveAEnd);
+        
+        return retracementMove / waveAMove;
+    }
+
+    // 7. 交易信号生成
+    generateSignals() {
+        const signals = [];
+        const waves = this.identifyWaves();
+        
+        waves.forEach((waveSet, index) => {
+            if (waveSet.length >= 5) {
+                const lastWave = waveSet[waveSet.length - 1];
+                
+                // 检查是否完成5浪
+                if (this.isWave5Complete(waveSet)) {
+                    // 生成反转信号
+                    signals.push({
+                        type: 'REVERSAL',
+                        direction: waveSet[0].type === 'up' ? 'SELL' : 'BUY',
+                        confidence: this.calculateConfidence(waveSet),
+                        timestamp: lastWave.end.timestamp,
+                        price: lastWave.end.price,
+                        rationale: '5-wave impulse pattern completed'
+                    });
+                }
+                
+                // 检查浪2或浪4的回撤买入机会
+                if (waveSet.length === 2 || waveSet.length === 4) {
+                    const fibLevels = this.calculateFibonacciLevels(
+                        waveSet[0].start.price,
+                        waveSet[0].end.price
+                    );
+                    
+                    const currentPrice = lastWave.end.price;
+                    const keyLevels = [fibLevels[0.382], fibLevels[0.5], fibLevels[0.618]];
+                    
+                    keyLevels.forEach(level => {
+                        if (Math.abs(currentPrice - level) / level < 0.02) { // 2%阈值
+                            signals.push({
+                                type: 'RETRACEMENT',
+                                direction: waveSet[0].type === 'up' ? 'BUY' : 'SELL',
+                                confidence: 0.7,
+                                timestamp: lastWave.end.timestamp,
+                                price: currentPrice,
+                                rationale: `Fibonacci retracement at ${level}`
+                            });
+                        }
+                    });
+                }
+            }
+        });
+        
+        return signals;
+    }
+
+    // 8. 波浪完成度检查
+    isWave5Complete(waves) {
+        return waves.length >= 5 && this.validateWaveRules(waves);
+    }
+
+    // 9. 置信度计算
+    calculateConfidence(waveSet) {
+        let confidence = 0.5; // 基础置信度
+        
+        // 基于斐波那契关系的置信度
+        const wave1 = waveSet[0];
+        const wave3 = waveSet[2];
+        const wave5 = waveSet[4];
+        
+        const wave3Extension = wave3.magnitude / wave1.magnitude;
+        if (wave3Extension > 1.618 && wave3Extension < 2.618) {
+            confidence += 0.2;
+        }
+        
+        // 基于成交量的置信度 (如果有数据)
+        if (this.hasVolumeData()) {
+            confidence += 0.1;
+        }
+        
+        return Math.min(confidence, 0.95);
+    }
+
+    // 10. 数据完整性检查
+    hasVolumeData() {
+        return this.priceData.length > 0 && 'volume' in this.priceData[0];
+    }
+
+    // 11. 主分析函数
+    analyze(data) {
+        this.findExtremes(data);
+        const waves = this.identifyWaves();
+        const signals = this.generateSignals();
+        
+        return {
+            extremes: {
+                peaks: this.peaks,
+                troughs: this.troughs
+            },
+            waves: waves,
+            signals: signals,
+            summary: this.generateSummary(waves, signals)
+        };
+    }
+
+    // 12. 生成分析报告
+    generateSummary(waves, signals) {
+        return {
+            totalWaves: waves.length,
+            totalSignals: signals.length,
+            buySignals: signals.filter(s => s.direction === 'BUY').length,
+            sellSignals: signals.filter(s => s.direction === 'SELL').length,
+            averageConfidence: signals.reduce((sum, s) => sum + s.confidence, 0) / signals.length || 0
+        };
+    }
+}
+
+// 使用示例
+async function exampleUsage() {
+    // 模拟价格数据
+    const mockData = [
+        { timestamp: '2024-01-01', open: 100, high: 105, low: 98, close: 104 },
+        { timestamp: '2024-01-02', open: 104, high: 112, low: 103, close: 110 },
+        // ... 更多数据
+    ];
+    
+    // 创建分析器实例
+    const analyzer = new ElliottWaveAnalyzer({
+        minWaveLength: 3, // 3% 最小波动
+        retracementThreshold: 0.3
+    });
+    
+    // 执行分析
+    const results = analyzer.analyze(mockData);
+    
+    console.log('波浪分析结果:', results);
+    
+    // 输出交易信号
+    results.signals.forEach(signal => {
+        console.log(`信号: ${signal.type} | 方向: ${signal.direction} | 置信度: ${signal.confidence}`);
+    });
+    
+    return results;
+}
+
+// 导出供其他模块使用
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = ElliottWaveAnalyzer;
+}
+
+---

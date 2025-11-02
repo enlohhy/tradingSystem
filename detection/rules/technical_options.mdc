@@ -1,0 +1,29 @@
+---
+alwaysApply: true
+---
+
+我需要创建一个可以检测币圈的一些币种（如btc、eth、sol、doge）的可视化应用，用python开发。
+可视化应用不需要折线图图表那种形式，只需按找文字的形式表示出来就行。
+
+##需要注意的是
+币种的价格需要是实时的。
+
+##项目目录结构
+项目的目录结构要规范，要易于后期的维护，代码要简洁，并且要有注释。
+
+
+https://www.oucnyi.biz/zh-hans/markets/prices   这是OKX的市场网页地址
+https://www.binancezh.info/zh-CN/markets/overview  这是币安的行情网页地址
+看这些地址是否对你有帮助。
+
+## 我需要你知道币种的指标
+如KDJ、MACD、VOL、K线走势、BOLL、MA，后续要用这些指标做技术分析。
+
+
+### 通用API文档
+#### BINANCE
+https://developers.binance.com/docs/binance-spot-api-docs/rest-api#market-data-endpoints   
+https://developers.binance.com/docs/binance-spot-api-docs/web-socket-streams
+
+#### OKX
+https://pypi.org/project/okx-api/ 

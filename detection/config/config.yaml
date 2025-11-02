@@ -1,0 +1,25 @@
+# 加密货币监测配置文件
+
+# 监测的币种列表
+cryptocurrencies:
+  - BTC
+  - ETH
+  - SOL
+  - DOGE
+
+# 币安WebSocket配置
+binance:
+  # WebSocket服务器地址
+  ws_url: "wss://stream.binance.com:9443"
+  
+  # REST API地址（用于获取初始数据）
+  api_url: "https://api.binance.com"
+  
+  # 交易对映射
+  symbol_map:
+    BTC: "BTCUSDT"
+    ETH: "ETHUSDT"
+    SOL: "SOLUSDT"
+    DOGE: "DOGEUSDT"
+    BNB: "BNBUSDT"
+

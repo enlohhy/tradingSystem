@@ -1,0 +1,7 @@
+# 加密货币监测应用依赖包
+requests>=2.31.0
+pyyaml>=6.0.0
+colorama>=0.4.6
+websocket-client>=1.6.0
+numpy>=1.24.0
+

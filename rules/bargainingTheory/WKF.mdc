@@ -1,0 +1,589 @@
+---
+alwaysApply: true
+---
+
+## 以下是威科夫交易法的理论知识和代码实现计算逻辑的大概思路。可根据当前来进行优化和扩充。
+
+---
+### 威科夫交易法
+
+第一部分：威科夫交易法核心精要
+
+    威科夫方法由理查德·D·威科夫在20世纪初创立，他通过观察当时最成功的交易员（如J.P.摩根）的操作，总结出一套完整的市场分析方法。其核心思想是：市场价格的一切变化，都源于供需关系的不平衡。
+
+一、三大核心定律
+    1.供求定律
+
+        ·核心：价格涨跌的根本原因是供给和需求的相对力量变化。
+
+        ·需求 > 供给：价格上涨。
+
+        ·供给 > 需求：价格下跌。
+
+        ·供给 = 需求：价格处于平衡状态，窄幅震荡。
+
+        ·威科夫法的目标：在需求开始主导市场（吸筹阶段）时买入，在供给开始主导市场（派发阶段）时卖出。
+
+    2.因果定律
+
+        ·核心：大的价格运动（趋势，即“果”）需要长时间的能量积累（横盘整理，即“因”）。
+
+        ·“因”：在图表上表现为横盘整理的区间，时间越长，区间越宽，后续的“果”（趋势运动）就越强劲。
+
+        ·这解释了为什么“横有多长，竖有多高”。威科夫用“点数图”来量化这种“因”的规模，从而预测“果”的潜在目标价。
+
+    3.努力与结果定律
+
+        ·核心：价格的变动（结果）应该与背后的成交量（努力）成正比。
+
+        ·健康信号：巨大的成交量（努力）应该带来显著的价格位移（结果）。这确认了趋势的有效性。
+
+        ·背离警告（非常重要！）：
+
+            ·努力 > 结果：成交量巨大，但价格几乎没动（例如，长上影线）。这表明尽管买方/卖方很“努力”，但遇到了强大的阻力/支撑，趋势可能即将反转。
+
+            ·努力 < 结果：价格大幅移动，但成交量很小。这表明趋势虚弱，不可持续，可能是“假突破”。
+
+二、市场参与者的角色
+
+    威科夫将市场参与者分为两大类：
+
+    ·Composite Man（综合人/聪明钱）：这不是指某一个人，而是指市场上拥有资金、信息优势的大机构、庄家的集体行为代表。他们总是试图在散户恐惧时低价买入，在散户狂热时高价卖出。
+
+    ·散户：通常是市场的反面教材，情绪驱动，追涨杀跌，在顶部接盘，在底部割肉。
+
+    威科夫法的目标，就是让您通过图表读懂“综合人”的意图，并跟随他们行动。
+
+三、威科夫市场周期（四个阶段与两个详细环节）
+    
+    威科夫将市场循环分解为两个核心环节：吸筹 和 派发。
+
+    1. 吸筹阶段 - “聪明钱”在底部买入
+
+    这是下跌趋势结束后，大资金开始积累头寸的阶段。整个过程可能充满“诱空”陷阱。
+
+    典型事件序列（SOS - 需求显现）：
+
+        ·初步支撑（PS）：经过长期下跌后，出现放量下跌，有大量买单开始介入。
+
+        ·抛售高潮（SC）：恐慌性抛售达到极致，价格暴跌，成交量巨大。这是散户最后割肉的地方，“聪明钱”在此大量接盘。
+
+        ·自动反弹（AR）：由于抛压枯竭，买盘轻松将价格推高，形成反弹。
+
+        ·二次测试（ST）：价格再次回落到SC区域附近，但成交量显著萎缩，下跌无力。这表明供给已经枯竭。成功的ST会形成更高的低点。
+
+        ·之后：市场会经历多次测试，形成震荡区间。一旦需求最终战胜供给，就会出现 “跳跃运动”（SOS） 带量突破震荡区间上沿，标志着上升趋势的开始。
+
+    2. 派发阶段 - “聪明钱”在顶部卖出
+
+    这是上涨趋势结束后，大资金开始派发头寸给散户的阶段。整个过程可能充满“诱多”陷阱。
+
+    典型事件序列（LPSY - 最后供应点）：
+
+        ·初步供应（PSY）：经过长期上涨后，出现放量但涨势乏力的现象，大资金开始首次卖出。
+
+        ·买入高潮（BC）：市场情绪狂热，价格暴涨，成交量巨大。散户疯狂追涨，“聪明钱”在此大量派发。
+
+        ·上冲回落（UTAD）：价格短暂突破BC高点，但迅速回落，收盘于其下，形成假突破。
+
+        ·二次测试（ST）：价格反弹至BC/UTAD区域，但成交量萎缩，上涨无力。
+
+        ·之后：市场在震荡区间内，一旦供给最终战胜需求，就会出现 “下跌运动”（LPSY） 带量跌破震荡区间下沿，标志着下降趋势的开始。
+
+    上升趋势 和 下降趋势 阶段，就是SOS和LPSY之后的价格主升/主跌浪。
+
+第二部分：如何将威科夫法应用于币圈交易
+
+    币圈市场以其高波动性、24/7交易、巨鲸操纵明显的特点而闻名，这使得威科夫方法尤其适用。
+
+    优势与挑战
+    ·优势：
+
+        1.识别巨鲸动向：币圈的“综合人”就是巨鲸和大型机构。威科夫法能帮您解读他们的吸筹和派发行为。
+
+        2.规避情绪化交易：提供了一套客观的图表分析框架，避免FOMO（害怕错过）和FUD（恐惧、不确定、怀疑）。
+
+        3.高胜率入场点：通过寻找SOS、SOS后的回测（LPS）等信号，可以找到风险回报比极佳的入场点。
+
+    ·挑战：
+
+        1.波动性极大：事件序列可能以非常剧烈和快速的形式完成，需要更灵活的判断。
+
+        2.假信号多：由于操纵和高杠杆清算的存在，假突破非常常见。必须严格遵循 “努力与结果” 定律进行过滤。
+
+    实战步骤与建议
+    1.识别大周期阶段：
+
+        ·首先在日线或周线图上，判断当前比特币或主流币是处于吸筹、派发、上升趋势还是下降趋势的大框架中。不要逆大趋势操作。
+
+    2.寻找供需信号：
+
+        ·成交量是关键：任何价格关键位置（前高、前低、支撑阻力位）的突破或测试，都必须结合成交量分析。
+
+        ·吸筹迹象：在长期下跌后，寻找“放量止跌”的K线（可能是Pin Bar、吞噬阳线），随后是低量的回测（ST）。当价格再次放量突破震荡区间上沿时，是理想的做多信号。
+
+        ·派发迹象：在长期上涨后，寻找“放量滞涨”的K线（长上影线、乌云盖顶），随后是低量的反弹（ST）。当价格放量跌破震荡区间下沿时，是理想的做空信号。
+
+    3.运用努力与结果定律过滤信号：
+
+        ·当价格强势突破一个阻力位时，观察成交量。如果成交量很小（努力不足），这很可能是假突破，不要追。
+
+        ·当价格测试一个支撑位时，如果成交量萎缩（努力不足），说明卖压很小，支撑有效，可以考虑买入。
+
+    4.制定交易计划：
+
+        ·入场：在SOS或LPSY信号出现时入场。
+
+        ·止损：将止损设置在导致你交易信号失效的位置下方。例如，在吸筹阶段做多，止损应设在最近的关键ST低点下方。
+
+        ·止盈：可以根据“因果定律”估算目标位，或者顺势持有，直到在更高级别时间框架上出现派发迹象。
+
+    币圈特有注意事项
+        ·杠杆使用：币圈合约交易杠杆极高。使用威科夫法时，务必轻仓、低杠杆，否则一个正常的市场波动就可能让您爆仓，等不到真正的信号来临。
+
+        ·结合使用：可以将威科夫方法与其他的支撑阻力、均线等工具结合，但核心逻辑应始终是供需分析。
+
+        ·持续学习与实践：建议先在现货市场用威科夫方法进行模拟交易或小资金实践，熟练后再考虑合约。复盘每一笔交易，无论盈亏，分析是否符合威科夫原则。
+
+第三部分：核心补充与进阶技巧
+
+一、最重要的图表：点数图
+
+    威科夫本人非常依赖点数图，它过滤了时间因素和微小波动，能最纯粹地展现供需关系。
+
+    ·为什么重要？
+
+        1.精准量化“因果”：点数图能清晰地显示出横盘整理（因）的宽度和高度，从而通过计数法精确计算出趋势（果）的最小目标位。这在波动巨大的币圈尤其有用。
+
+        2.识别关键突破：点数图上的突破信号通常比K线图更可靠，能有效过滤假信号。
+
+    ·如何在币圈使用：您可以在TradingView等图表工具中添加点数图。结合K线图使用，当两者同时发出突破信号时，交易的胜率会显著提高。
+
+二、详细的“进场”与“出场”信号
+
+    我们知道了阶段，但具体在哪一刻下单？
+
+    1.最佳进场点：最后支撑点 & 最后供应点
+
+        ·LPS（最后支撑点）：在吸筹阶段，SOS（需求显现）跳空上涨之后，价格第一次回踩至前期震荡区间上沿或均线支撑位，且成交量萎缩。这是“上涨趋势中的回调”，是风险极低的黄金做多点。
+
+        ·LPSY（最后供应点）：在派发阶段，UTAD（上冲回落）之后，价格第一次反弹至前期震荡区间下沿或均线压力位，且成交量萎缩。这是“下跌趋势中的反弹”，是完美的做空点。
+
+    简单比喻：SOS是“冲锋号”，而LPS是“总攻开始后，敌人第一次溃退时你冲上去补刀的位置”。
+
+    2.趋势中的加仓点：任何一次SOS之后的LPS，都是良好的加仓机会。
+
+    3.出场与止损：
+
+        ·止损：永远不要将止损设置在显而易见的、所有人都能看到的位置（比如前低点下方一点点）。巨鲸专门会打掉这些止损。您的止损应该设置在让您整个交易逻辑失效的位置。例如，做多时，止损应设在能证明“需求并未战胜供给”的关键价位下方，这可能比前低点更深一些，但因此也更安全。
+
+        ·止盈：不要试图卖在最高点。当在高级别图表（如日线）上出现明显的派发初期信号（如BC、UTAD）时，就是分批离场的时候。或者，当价格上涨再次出现“努力与结果”背离（价格新高，成交量萎缩）时，开始止盈。
+
+三、币圈实战中必须警惕的“变异”情况
+
+    币圈的独特生态要求我们对经典理论保持灵活。
+
+    1.“V型反转”的应对：币圈经常出现急速下跌后又急速拉升的V型反转，没有标准的吸筹区间。这时，二次测试 的概念就至关重要。等待价格拉回后，形成一个更高的低点，并且在这个低点位置成交量极度萎缩，这本身就是一个微型的“ST”，可以作为入场信号。
+
+    2.消息面的干扰：突发新闻、监管政策会瞬间改变供需。应对方法：
+
+        ·不交易重大消息发布瞬间，等待市场消化消息。
+
+        ·观察消息公布后的价格反应：“消息本身不如消息带来的市场反应重要”。如果出现利好但价格不涨（努力无结果），这本身就是强大的派发信号；反之，利空不跌则是吸筹信号。
+
+    3.识别“假币”和“山寨币”的陷阱：很多小币种完全被庄家控盘，其图表可能是人为画出来的。只将威科夫方法应用于有足够深度和成交量的大型主流币（如BTC, ETH, BNB等）。在小币种上，威科夫周期可能会被极度压缩和扭曲。
+
+第四部分：构建完整的威科夫交易系统
+
+    理论必须系统化才能执行。
+
+    1.自上而下的分析流程：
+
+        ·步骤一：看BTC（市场指数）。BTC是整个币圈的“大盘”，它处于什么阶段，决定了整体市场的风险偏好。
+
+        ·步骤二：看目标币种与BTC的联动性。它是强于BTC还是弱于BTC？
+
+        ·步骤三：在目标币种的周线图上判断主要趋势（吸筹、派发、上涨、下跌）。
+
+        ·步骤四：在日线/4小时图上寻找交易信号（SOS, LPS, ST等）。
+
+        ·步骤五：在更小时间框架（如1小时）上寻找精准入场点，并结合点数图确认。
+
+    2.交易清单：每次交易前，问自己以下问题：
+
+        ·当前价格处于威科夫周期的哪个阶段？
+
+        ·目前的走势是否符合“努力与结果”定律？有没有出现背离？
+
+        ·我的入场信号是基于SOS/LPS，还是因为我FOMO了？
+
+        ·我的止损位设置在哪里？这个位置是否会让我的交易逻辑失效？
+
+        ·这笔交易的风险回报比是否至少大于1：2？
+
+第五部分：超越图表——交易者的心智与哲学
+
+    1.市场是你的老师，不是你的取款机
+
+        ·带着敬畏之心看待市场。每一笔亏损都不是失败，而是你付给市场的“学费”。关键在于，你是否从中学到了东西？复盘亏损单的价值远大于欣喜盈利单。
+
+    2.“故事”与“反应”，哪个更重要？
+
+        ·币圈充满了动人的故事：元宇宙、Web3.0、新公链...不要爱上任何一个故事。威科夫法告诉我们：“价格行为（反应）包含了所有已知和未知的信息。” 如果一则利好新闻出现，但价格却放量下跌（努力无结果），请相信图表的“反应”，抛弃那个动人的“故事”。这通常是“综合人”在借利好派发。
+
+    3.“无为”的智慧
+
+        ·市场大部分时间处于“无趋势”的混沌状态，即吸筹或派发的过程中。在这些阶段，威科夫交易者最好的操作就是不操作。耐心等待市场走出明确的SOS或LPSY信号。你的任务不是预测市场每一波跳动，而是识别并确认趋势的启动，然后骑马。
+
+第六部分：高级决策框架——提升你的胜算
+
+    1.“三板斧”确认原则
+
+        ·任何一个重要的交易决策， ideally 应该得到至少三个方面的确认：
+
+            ·价格行为确认：出现了标准的威科夫事件（如SOS突破）。
+
+            ·成交量确认：价格行为得到了“努力与结果”定律的支持。
+
+            ·市场背景确认：BTC的大趋势与你交易的方向一致。如果BTC在派发，你的山寨币出现做多信号，其成功率会大打折扣。
+
+    2.“如果...那么...”的情景规划
+
+        ·在入场前，不只是规划“我认为它会涨”，而是要规划好市场可能走的几种路径：
+
+            ·“如果价格按预期上涨，那么我将在LPS位置加仓，并在出现派发初期信号时止盈。”
+
+            ·“如果价格回落到我的止损位，那么我坚决离场，并重新评估市场阶段。”
+
+            ·“如果价格在此横盘震荡，那么我保持耐心，直到它选择方向。”
+
+        ·这能让你在瞬息万变的市场中保持冷静和纪律，避免情绪化决策。
+
+第七部分：币圈特有的终极风险与应对
+
+    1.“黑天鹅”清算瀑布
+
+        ·币圈由于高杠杆和相互关联的借贷关系，容易出现因大规模清算导致的瞬间极端行情。这种行情会摧毁任何技术分析。
+
+        ·应对：
+
+            ·极度轻仓：确保你的仓位即使遭遇20%-30%的瞬间反向波动也不会爆仓。
+
+            ·分散持仓：不要将所有资金投入一个币种或一个交易方向。
+
+            ·使用交易所的“条件单”：提前设置好远离当前市价的止损单，以防行情突变时无法手动操作。
+
+    2.“圣杯陷阱”
+
+        ·当你初用威科夫法获得几次成功後，很容易产生“我已掌握圣杯”的错觉，从而开始放松纪律、重仓交易。
+
+        ·记住：威科夫法提供的是概率优势，不是确定性。长期稳定盈利的核心是风险管理和一致性。一场意外的失败足以抹去你十次成功的利润。
+
+最终检查清单：在点击“买入/卖出”前，最后一次问自己
+
+    ·趋势：我在顺应BTC的大趋势吗？
+
+    ·阶段：我能清晰地说出当前是吸筹、派发、上涨还是下跌阶段吗？
+
+    ·信号：我的入场点是基于LPS/SOS/LPSY这类高胜率信号，还是因为害怕错过？
+
+    ·努力与结果：当前的成交量支持我的判断吗？有无背离？
+
+    ·计划：我的“如果...那么...”情景规划做好了吗？
+
+    ·风险：这笔交易亏损，会影响我的心态和生存吗？
+---
+
+### 威科夫交易法计算函数 示例
+
+---
+核心分析框架代码实现
+1. 基础数据结构和配置
+javascript
+// 威科夫分析配置
+const WyckoffConfig = {
+  volumeThreshold: 1.5,      // 成交量阈值倍数
+  priceChangeThreshold: 0.02, // 价格变化阈值 (2%)
+  accumulationDays: 20,       // 吸筹阶段最小天数
+  distributionDays: 15        // 派发阶段最小天数
+};
+
+// K线数据结构
+class Candlestick {
+  constructor(timestamp, open, high, low, close, volume) {
+    this.timestamp = timestamp;
+    this.open = open;
+    this.high = high;
+    this.low = low;
+    this.close = close;
+    this.volume = volume;
+  }
+}
+
+// 威科夫事件识别结果
+class WyckoffEvent {
+  constructor(type, confidence, priceLevel, volume, description) {
+    this.type = type;           // PS, SC, AR, ST, SOS, LPS等
+    this.confidence = confidence; // 0-1 置信度
+    this.priceLevel = priceLevel;
+    this.volume = volume;
+    this.description = description;
+    this.timestamp = new Date();
+  }
+}
+2. 核心分析引擎
+javascript
+class WyckoffAnalyzer {
+  constructor(candlesticks) {
+    this.candlesticks = candlesticks;
+    this.events = [];
+    this.phase = 'UNKNOWN';
+  }
+
+  // 计算移动平均
+  calculateMA(period, field = 'close') {
+    const result = [];
+    for (let i = period - 1; i < this.candlesticks.length; i++) {
+      const slice = this.candlesticks.slice(i - period + 1, i + 1);
+      const sum = slice.reduce((acc, candle) => acc + candle[field], 0);
+      result.push(sum / period);
+    }
+    return result;
+  }
+
+  // 计算成交量加权平均价
+  calculateVWAP() {
+    const vwap = [];
+    let cumulativeTPV = 0;
+    let cumulativeVolume = 0;
+
+    this.candlesticks.forEach(candle => {
+      const typicalPrice = (candle.high + candle.low + candle.close) / 3;
+      cumulativeTPV += typicalPrice * candle.volume;
+      cumulativeVolume += candle.volume;
+      vwap.push(cumulativeTPV / cumulativeVolume);
+    });
+
+    return vwap;
+  }
+
+  // 检测抛售高潮 (Selling Climax - SC)
+  detectSellingClimax() {
+    const events = [];
+    
+    for (let i = 10; i < this.candlesticks.length - 5; i++) {
+      const current = this.candlesticks[i];
+      const prevVolumeAvg = this.candlesticks
+        .slice(i - 10, i)
+        .reduce((sum, c) => sum + c.volume, 0) / 10;
+
+      // SC特征：极高成交量 + 价格大幅下跌 + 长下影线
+      const volumeSpike = current.volume > prevVolumeAvg * WyckoffConfig.volumeThreshold;
+      const priceDrop = (current.close - current.open) / current.open < -0.03; // 下跌超过3%
+      const hasLongLowerShadow = (current.low - Math.min(current.open, current.close)) / 
+                                (current.high - current.low) > 0.3; // 下影线占比
+
+      if (volumeSpike && priceDrop && hasLongLowerShadow) {
+        const confidence = this.calculateSCConfidence(i);
+        events.push(new WyckoffEvent(
+          'SC',
+          confidence,
+          current.low,
+          current.volume,
+          `抛售高潮检测，成交量放大 ${(current.volume/prevVolumeAvg).toFixed(1)}倍`
+        ));
+      }
+    }
+    
+    return events;
+  }
+
+  // 检测自动反弹 (Automatic Rally - AR)
+  detectAutomaticRally(scIndex) {
+    const events = [];
+    
+    for (let i = scIndex + 1; i < Math.min(scIndex + 10, this.candlesticks.length); i++) {
+      const current = this.candlesticks[i];
+      const scCandle = this.candlesticks[scIndex];
+      
+      const priceRecovery = current.close > scCandle.close * 1.05; // 从SC低点反弹5%
+      const volumeDecline = current.volume < scCandle.volume * 0.7; // 成交量较SC下降
+
+      if (priceRecovery && volumeDecline) {
+        events.push(new WyckoffEvent(
+          'AR',
+          0.8,
+          current.high,
+          current.volume,
+          '自动反弹，价格从SC低点回升'
+        ));
+        break;
+      }
+    }
+    
+    return events;
+  }
+
+  // 检测二次测试 (Secondary Test - ST)
+  detectSecondaryTest(arIndex, scPrice) {
+    const events = [];
+    const arCandle = this.candlesticks[arIndex];
+    
+    for (let i = arIndex + 1; i < Math.min(arIndex + 15, this.candlesticks.length); i++) {
+      const current = this.candlesticks[i];
+      
+      // ST特征：价格回到SC区域但成交量萎缩
+      const nearSC = Math.abs(current.low - scPrice) / scPrice < 0.02; // 在SC价格2%范围内
+      const lowVolume = current.volume < arCandle.volume * 0.6;
+      const smallRange = (current.high - current.low) / current.low < 0.03; // 波动小
+
+      if (nearSC && lowVolume && smallRange) {
+        const confidence = this.calculateSTConfidence(i, scPrice);
+        events.push(new WyckoffEvent(
+          'ST',
+          confidence,
+          current.low,
+          current.volume,
+          `二次测试，成交量萎缩至AR的 ${(current.volume/arCandle.volume*100).toFixed(0)}%`
+        ));
+      }
+    }
+    
+    return events;
+  }
+
+  // 努力与结果分析
+  analyzeEffortVsResult(startIndex, endIndex) {
+    const slice = this.candlesticks.slice(startIndex, endIndex + 1);
+    const totalVolume = slice.reduce((sum, c) => sum + c.volume, 0);
+    const priceChange = (slice[slice.length - 1].close - slice[0].open) / slice[0].open;
+    
+    const avgVolume = this.candlesticks
+      .slice(Math.max(0, startIndex - 20), startIndex)
+      .reduce((sum, c) => sum + c.volume, 0) / 20;
+
+    const effort = totalVolume / (avgVolume * slice.length);
+    const result = Math.abs(priceChange);
+    
+    return {
+      effort,
+      result,
+      divergence: effort > 1.5 && result < 0.01 // 努力大但结果小
+    };
+  }
+
+  // 检测SOS (Sign of Strength)
+  detectSignOfStrength(accumulationRange) {
+    const events = [];
+    const { low: rangeLow, high: rangeHigh } = accumulationRange;
+    
+    for (let i = 0; i < this.candlesticks.length; i++) {
+      const current = this.candlesticks[i];
+      
+      // SOS特征：放量突破震荡区间上沿
+      const breakOut = current.close > rangeHigh * 1.02;
+      const highVolume = current.volume > this.calculateAverageVolume(i, 20) * 1.3;
+      const strongBody = (current.close - current.open) / current.open > 0.03;
+
+      if (breakOut && highVolume && strongBody) {
+        const effortResult = this.analyzeEffortVsResult(
+          Math.max(0, i - 3), i
+        );
+        
+        if (!effortResult.divergence) {
+          events.push(new WyckoffEvent(
+            'SOS',
+            0.85,
+            current.close,
+            current.volume,
+            `需求显现，放量突破吸筹区间`
+          ));
+        }
+      }
+    }
+    
+    return events;
+  }
+}
+3. 交易信号生成器
+javascript
+class WyckoffSignalGenerator {
+  constructor(analyzer) {
+    this.analyzer = analyzer;
+    this.signals = [];
+  }
+
+  generateSignals() {
+    // 1. 检测吸筹阶段事件
+    const scEvents = this.analyzer.detectSellingClimax();
+    
+    scEvents.forEach(scEvent => {
+      const scIndex = this.analyzer.candlesticks.findIndex(
+        c => c.low === scEvent.priceLevel
+      );
+      
+      // 检测AR
+      const arEvents = this.analyzer.detectAutomaticRally(scIndex);
+      
+      arEvents.forEach(arEvent => {
+        const arIndex = this.analyzer.candlesticks.findIndex(
+          c => c.high === arEvent.priceLevel
+        );
+        
+        // 检测ST
+        const stEvents = this.analyzer.detectSecondaryTest(
+          arIndex, 
+          scEvent.priceLevel
+        );
+        
+        // 如果找到完整的PS-SC-AR-ST序列，生成吸筹信号
+        if (stEvents.length > 0) {
+          this.signals.push({
+            type: 'ACCUMULATION_DETECTED',
+            phase: 'ACCUMULATION',
+            confidence: (scEvent.confidence + stEvents[0].confidence) / 2,
+            events: [scEvent, arEvents[0], stEvents[0]],
+            recommendation: '等待SOS信号做多',
+            timestamp: new Date()
+          });
+        }
+      });
+    });
+
+    // 2. 检测派发阶段事件 (类似的逻辑，但关注顶部形态)
+    this.detectDistribution();
+
+    return this.signals;
+  }
+
+  // 生成具体交易建议
+  generateTradingAdvice(signal) {
+    const advice = {
+      action: 'HOLD',
+      entry: null,
+      stopLoss: null,
+      takeProfit: null,
+      confidence: signal.confidence,
+      reasoning: []
+    };
+
+    if (signal.phase === 'ACCUMULATION') {
+      const stEvent = signal.events.find(e => e.type === 'ST');
+      const sosEvents = this.analyzer.detectSignOfStrength({
+        low: signal.events.find(e => e.type === 'SC').priceLevel,
+        high: signal.events.find(e => e.type === 'AR').priceLevel
+      });
+
+      if (sosEvents.length > 0) {
+        advice.action = 'BUY';
+        advice.entry = sosEvents[0].priceLevel;
+        advice.stopLoss = stEvent.priceLevel * 0.98; // 在ST下方2%
+        advice.takeProfit = advice.entry * 1.1; // 目标10%涨幅
+        advice.reasoning.push('SOS确认需求主导，在突破点入场');
+      }
+    }
+
+    return advice;
+  }
+}
+---
