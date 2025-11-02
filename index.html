@@ -533,6 +533,47 @@
             to { transform: rotate(360deg); }
         }
 
+        /* 移动端菜单按钮 */
+        .mobile-menu-btn {
+            display: none;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-btn:hover {
+            background: var(--bg-card);
+            border-color: var(--text-tertiary);
+        }
+
+        .mobile-menu-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* 侧边栏遮罩 */
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .sidebar-overlay.show {
+            display: block;
+            opacity: 1;
+        }
+
         /* 响应式设计 */
         @media (max-width: 1024px) {
             .main-container {
@@ -540,13 +581,39 @@
             }
 
             .sidebar {
-                display: none;
+                position: fixed;
+                left: -280px;
+                top: 60px;
+                width: 280px;
+                height: calc(100vh - 60px);
+                z-index: 1000;
+                transition: left 0.3s ease;
+                box-shadow: 2px 0 8px rgba(0, 0, 0, 0.3);
+            }
+
+            .sidebar.show {
+                left: 0;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .logo {
+                font-size: 18px;
             }
         }
 
         @media (max-width: 768px) {
             .navbar {
                 padding: 0 12px;
+                height: 56px;
+            }
+
+            .logo {
+                font-size: 16px;
             }
 
             .price-cards {
@@ -559,11 +626,126 @@
 
             .nav-controls {
                 gap: 6px;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+            }
+
+            .nav-controls .btn {
+                white-space: nowrap;
+                flex-shrink: 0;
             }
 
             .btn {
                 padding: 6px 10px;
                 font-size: 12px;
+            }
+
+            .status-indicator {
+                display: none;
+            }
+
+            .sidebar {
+                top: 56px;
+                height: calc(100vh - 56px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-controls .btn span {
+                display: none;
+            }
+
+            .btn {
+                padding: 8px;
+                min-width: 36px;
+                justify-content: center;
+            }
+
+            .logo::before {
+                margin-right: -4px;
+            }
+
+            .modal {
+                width: 95%;
+                padding: 20px 16px;
+                max-height: 85vh;
+            }
+
+            .modal-header h2 {
+                font-size: 18px;
+            }
+
+            .card {
+                padding: 16px;
+            }
+
+            .card-title {
+                font-size: 12px;
+            }
+
+            .card-value {
+                font-size: 20px;
+            }
+
+            .sidebar {
+                width: 100%;
+                left: -100%;
+            }
+
+            .sidebar.show {
+                left: 0;
+            }
+
+            .resonance-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .add-coin-input {
+                font-size: 14px;
+            }
+
+            .section-title {
+                font-size: 16px;
+                margin-bottom: 12px;
+            }
+
+            .indicator-card,
+            .theory-analysis {
+                padding: 12px;
+            }
+
+            .theory-title,
+            .indicator-title {
+                font-size: 14px;
+            }
+
+            .theory-content,
+            .indicator-value {
+                font-size: 13px;
+            }
+
+            .coin-item {
+                padding: 10px;
+                font-size: 14px;
+            }
+
+            .btn-add {
+                font-size: 13px;
+                padding: 10px;
+            }
+
+            .timeframe-btn {
+                font-size: 12px;
+                padding: 6px 10px;
+            }
+
+            .trade-action {
+                font-size: 16px;
+                padding: 12px;
+            }
+
+            .confidence-bar {
+                height: 6px;
             }
         }
 
@@ -1039,26 +1221,34 @@
 <body>
     <!-- 顶部导航栏 -->
     <nav class="navbar">
-        <div class="logo">加密货币智能监测系统</div>
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <button class="mobile-menu-btn" id="mobileMenuBtn" onclick="toggleSidebar()">
+                ☰
+            </button>
+            <div class="logo">加密货币智能监测系统</div>
+        </div>
         <div class="nav-controls">
             <div class="status-indicator">
                 <div class="status-dot" id="statusDot"></div>
                 <span id="statusText">连接中...</span>
             </div>
             <button class="btn btn-secondary" id="refreshBtn" onclick="manualRefresh()">
-                🔄 刷新
+                🔄 <span>刷新</span>
             </button>
             <button class="btn btn-primary" id="analyzeBtn" onclick="showAnalysisOptions()">
-                📊 技术分析
+                📊 <span>技术分析</span>
             </button>
             <button class="btn btn-primary" id="scanBtn" onclick="scanMarketOpportunities()" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                🔍 扫描市场
+                🔍 <span>扫描市场</span>
             </button>
             <button class="btn btn-success" id="toggleBtn" onclick="toggleMode()">
-                ⏸️ 暂停
+                ⏸️ <span>暂停</span>
             </button>
         </div>
     </nav>
+
+    <!-- 侧边栏遮罩层 -->
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
 
     <!-- 主容器 -->
     <div class="main-container">
@@ -1375,6 +1565,11 @@
             clearAnalysisResults();
             
             loadKlineData(symbol, currentTimeframe);
+            
+            // 在移动端选择币种后自动关闭侧边栏
+            if (window.innerWidth <= 1024) {
+                closeSidebar();
+            }
         }
 
         function clearAnalysisResults() {
@@ -5445,16 +5640,43 @@
             const btn = document.getElementById('toggleBtn');
             
             if (realtimeMode) {
-                btn.innerHTML = '⏸️ 暂停';
+                btn.innerHTML = '⏸️ <span>暂停</span>';
                 btn.className = 'btn btn-success';
                 if (!isConnected) connectWebSocket();
             } else {
-                btn.innerHTML = '▶️ 恢复';
+                btn.innerHTML = '▶️ <span>恢复</span>';
                 btn.className = 'btn btn-secondary';
                 if (ws) ws.close();
             }
             
             updateStatus(isConnected);
+        }
+
+        // 侧边栏控制函数
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            
+            if (sidebar.classList.contains('show')) {
+                closeSidebar();
+            } else {
+                sidebar.classList.add('show');
+                overlay.classList.add('show');
+                // 在移动端防止背景滚动
+                if (window.innerWidth <= 1024) {
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+        }
+
+        function closeSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            
+            sidebar.classList.remove('show');
+            overlay.classList.remove('show');
+            // 恢复滚动
+            document.body.style.overflow = '';
         }
 
         function manualRefresh() {
